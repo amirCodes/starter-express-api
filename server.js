@@ -1,5 +1,5 @@
 import path from 'path';
-// import cors from 'cors'
+import cors from 'cors'
 import express from 'express';
 import dotenv from 'dotenv';
 
@@ -20,7 +20,7 @@ const corsOptions = {
     methods: 'GET,HEAD,PUT,UPDATE,PATCH,POST,DELETE'
 }
 app.use(express.json())
-    // app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
@@ -37,10 +37,10 @@ if (process.env.NODE_ENV === 'production') {
     //     res.send('Welcome to InfosysGateway API application. profile[get,put], logout[post], auth[post]');
     // });
     const __dirname = path.resolve();
-    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+    app.use(express.static(path.join(__dirname, '/dist')));
 
     app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+        res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
     );
 } else {
     app.get('/', (req, res) => {

@@ -11,8 +11,8 @@ const generateToken = (res, userId) => {
         // sameSite: 'strict', // Prevent CSRF attacks
         // maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
         httpOnly: false,
-        signed: true,
-        sameSite: 'Lax',
+        // signed: true,
+        sameSite: 'lax',
         maxAge: 1 * 2 * 60 * 60 * 1000, // 30 days
     });
 };

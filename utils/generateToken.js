@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const generateToken = (res, userId) => {
     const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
-        expiresIn: '30d',
+        expiresIn: '2h',
     });
 
     res.cookie('jwt', token, {
@@ -12,8 +12,8 @@ const generateToken = (res, userId) => {
         // maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
         httpOnly: false,
         signed: true,
-        sameSite: 'none',
-        maxAge: 1 * 60 * 60 * 1000, // 30 days
+        sameSite: 'Lax',
+        maxAge: 1 * 2 * 60 * 60 * 1000, // 30 days
     });
 };
 
